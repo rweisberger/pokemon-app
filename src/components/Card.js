@@ -7,7 +7,7 @@ const Card = ({pokemon:{name, abilities, types, weight, height, sprites}}) => {
                       'fire': 'red'};
     let color= typeColor[type.name];
 
-    name = name[0].toUpperCase() + name.slice(1)
+    name = name[0].toUpperCase() + name.slice(1);
 
     return(
         <div className="card" style={{ "width": "18rem "}}>

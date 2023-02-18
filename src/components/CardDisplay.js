@@ -1,12 +1,11 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import Card from "./Card";
-
-
+import UserContext from "./Context";
 
 const CardDisplay = () => {
-    const [pokemons, setPokemons] = useState();
+    const {pokemons, setPokemons } = useContext(UserContext);
 
     useEffect(() => {    
         let results = [];
