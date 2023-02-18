@@ -31,7 +31,7 @@ const CardDisplay = () => {
   return (
     <div className="container">
         {pokemons?.length ? (
-            pokemons.map((pokemon, i) => <Card props ={pokemon} key={i}/>)
+            pokemons.map((pokemon, i) => <Card pokemon={pokemon} key={i}/>)
         ) : (
             <div>NO POKES</div>
         ) }

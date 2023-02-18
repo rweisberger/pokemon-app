@@ -1,12 +1,22 @@
-const Card = (props) => {
-    console.log('props', props)
-    // const 
+const Card = ({pokemon:{name, abilities, types, weight, height, sprites}}) => {
+    // console.log('props', name, abilities, types, weight, height, sprites)
+    const [{ ability }] = abilities;
+    const [{type}] = types
+    const typeColor = {'grass': 'green', 
+                      'water': 'blue',
+                      'fire': 'red'};
+    let color= typeColor[type.name];
+
+    name = name[0].toUpperCase() + name.slice(1)
 
     return(
         <div className="card" style={{ "width": "18rem "}}>
-            <img className="card-img-top" src={props?.sprites?.front_default} alt="Card image cap"/>
+            <img className="card-img-top" src={sprites?.front_default} alt={`Front view of ${name}`}/>
             <div className="card-body">
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">{name}</h5>
+                <div> <b>Height:</b> {height} <b>Weight:</b> {weight}</div>
+                <div> <b>Ability:</b> {ability.name} </div>
+                <div style={{ "color": color}}> <b>Type:</b> {type.name} </div>
             </div>
         </div>
     )
