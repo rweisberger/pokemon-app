@@ -5,16 +5,18 @@ import UserContext from "./Context";
 
 const SearchBar =() => {
     const [searchName, setSearchName] = useState('');
-    const { pokemons, setPokemons } = useContext(UserContext);
+    const { pokemons, setDisplayedPokemons } = useContext(UserContext);
     // console.log('pokemons',pokemons)
 
     const findPokemon = (e) => {
         e.preventDefault();
-        console.log(searchName);
-        let matches = pokemons.filter(pokemon => pokemon.name.includes(searchName))
-        console.log(matches);
-        setPokemons(matches);
-
+        if(searchName.length){
+            // console.log(searchName);
+            let matches = pokemons.filter(pokemon => pokemon.name.includes(searchName))
+            setDisplayedPokemons(matches);
+        } else {
+            setDisplayedPokemons(pokemons)
+        }
     }
  
     return (

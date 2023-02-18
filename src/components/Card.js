@@ -1,24 +1,63 @@
+import { useContext, useEffect, useState} from "react";
+import axios from "axios";
+
+import UserContext from "./Context";
+import "./Card.css";
+
 const Card = ({pokemon:{name, abilities, types, weight, height, sprites}}) => {
-    // console.log('props', name, abilities, types, weight, height, sprites)
+    const { isBattleActive, competitors, setCompetitors } = useContext(UserContext);
     const [{ ability }] = abilities;
     const [{type}] = types
     const typeColor = {'grass': 'green', 
                       'water': 'blue',
                       'fire': 'red'};
     let color= typeColor[type.name];
+    const [isSelected, setIsSelected] = useState(false)
 
     name = name[0].toUpperCase() + name.slice(1);
 
+    const handleClick = () => {
+        console.log(name);
+        setIsSelected(true);
+        setCompetitors([...competitors, name])
+        console.log('competitors', competitors);
+    }
+
+    console.log('competitors', competitors)
+
+    // const battle = () => {
+    //     if(competitors.length === 2){
+    //         alert(`${competitors[0]} v. ${competitors[1]}: Battle on! `)
+    //         // axios.
+    //         setCompetitors([])
+    //     }
+    // }
+    // if(competitors.length === 2) battle()
+    
     return(
-        <div className="card" style={{ "width": "18rem "}}>
+        <>
+        {isBattleActive ? (
+            <div className="card" style={{ "width": "18rem", "background": isSelected ? "lightgreen": ""}} onClick={handleClick}>
+                <img className="card-img-top" src={sprites?.front_default} alt={`Front view of ${name}`}/>
+                <div className="card-body">
+                    <h5 className="card-title">{name}</h5>
+                    <div> <b>Height:</b> {height} <b>Weight:</b> {weight}</div>
+                    <div> <b>Ability:</b> {ability.name} </div>
+                    <div style={{ "color": color}}> <b>Type:</b> {type.name} </div>
+                </div>
+            </div>
+        ) : (
+        <div className="card" style={{ "width": "18rem", "background": 'white'}}>
             <img className="card-img-top" src={sprites?.front_default} alt={`Front view of ${name}`}/>
             <div className="card-body">
-                <h5 class="card-title">{name}</h5>
+                <h5 className="card-title">{name}</h5>
                 <div> <b>Height:</b> {height} <b>Weight:</b> {weight}</div>
                 <div> <b>Ability:</b> {ability.name} </div>
                 <div style={{ "color": color}}> <b>Type:</b> {type.name} </div>
             </div>
         </div>
+        )}
+    </>
     )
 }
 export default Card;
