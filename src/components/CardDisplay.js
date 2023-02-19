@@ -17,7 +17,6 @@ const CardDisplay = () => {
         }   
         Promise.all(requests).then(responses => {
             responses.forEach(response => {
-                console.log(response.data)
                 const { name, abilities, types, weight, height, sprites } = response.data;
                 results.push({name, abilities, types, weight, height, sprites});   
             })
