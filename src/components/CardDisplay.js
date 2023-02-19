@@ -24,14 +24,17 @@ const CardDisplay = () => {
                 console.log(error);
             }) 
         }   
-
     // eslint-disable-next-line 
     },[])
 
-    if (competitors.length === 2) {
-            alert('battle!')
+    useEffect(() => {
+        if (competitors.length === 2) {
+            alert(`${competitors[0]} v. ${competitors[1]}: Battle on!`)
             setCompetitors([]);
-        } 
+            } 
+    // eslint-disable-next-line
+    },[competitors.length])
+
     
   return (
     <div className="flex">

@@ -12,25 +12,17 @@ function App() {
   const [pokemons, setPokemons] = useState();
   const [displayedPokemons, setDisplayedPokemons] = useState();
 
-
-
   let context = {pokemons, setPokemons, displayedPokemons, setDisplayedPokemons, isBattleActive, setIsBattleActive, competitors, setCompetitors}
   
-  // const handleClick = () => {
-  //   setIsBattleActive(true);
-  // }
-
   return (
 
     <div className="App">
       <UserContext.Provider value={context}> 
         <SearchBar />
         <BattleButton />
-        {/* <button type="button" className="btn btn-outline-danger" onClick={handleClick}>Battle Mode</button> */}
         <h1>Pokemon</h1>
         <CardDisplay />
       </UserContext.Provider>
-
     </div>
   );
 }

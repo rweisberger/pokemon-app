@@ -4,11 +4,9 @@ import UserContext from "./Context";
 
 const BattleButton = () => {
     const { isBattleActive, setIsBattleActive } = useContext(UserContext);
-    // console.log('battle', isBattleActive)
 
     const handleClick = () => {
         setIsBattleActive(!isBattleActive);
-        // console.log('battle', isBattleActive)
     }
 
     return (

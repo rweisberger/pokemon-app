@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState} from "react";
-import axios from "axios";
+import { useContext, useState} from "react";
 
 import UserContext from "./Context";
 import "./Card.css";
@@ -22,17 +21,6 @@ const Card = ({pokemon:{name, abilities, types, weight, height, sprites}}) => {
         setCompetitors([...competitors, name])
         console.log('competitors', competitors);
     }
-
-    console.log('competitors', competitors)
-
-    // const battle = () => {
-    //     if(competitors.length === 2){
-    //         alert(`${competitors[0]} v. ${competitors[1]}: Battle on! `)
-    //         // axios.
-    //         setCompetitors([])
-    //     }
-    // }
-    // if(competitors.length === 2) battle()
     
     return(
         <>
