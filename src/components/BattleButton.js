@@ -10,7 +10,7 @@ const BattleButton = () => {
     }
 
     return (
-        <button type="button" className="btn btn-outline-danger" onClick={handleClick}>Battle Mode</button> 
+        <button type="button" className="btn btn-outline-danger my-3" onClick={handleClick}>Battle Mode</button> 
         )
 }
 

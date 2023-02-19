@@ -7,7 +7,7 @@ import "./CardDisplay.css";
 
 const CardDisplay = () => {
     const { pokemons, setPokemons, displayedPokemons, setDisplayedPokemons, isBattleActive, competitors, setCompetitors } = useContext(UserContext);
-
+    
     useEffect(() => {    
         let results = [];
 
@@ -54,7 +54,7 @@ const CardDisplay = () => {
     <div className="outer-container">
         <div className="inner-container">
             {displayedPokemons?.length ? (
-                displayedPokemons.map((pokemon, i) => <Card pokemon={pokemon} isBattle = {isBattleActive} key={i}/>)
+                displayedPokemons.map((pokemon, i) => <Card pokemon={pokemon} isBattle={isBattleActive} key={i}/>)
             ) : (
                 <div>Pokemon Loading...</div>
             ) }

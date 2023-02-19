@@ -15,7 +15,7 @@ const SearchBar =() => {
     }
  
     return (
-        <div className="input-group w-75 mx-auto">
+        <div className="input-group w-75 mx-auto mt-3">
             <input type="text" className="form-control" placeholder="Search Pokemon" aria-label="Recipient's username" aria-describedby="basic-addon2" onChange={(e) => findPokemon(e)}/>
         </div>
     )
