@@ -3,9 +3,10 @@ import { useContext, useEffect } from "react";
 
 import Card from "./Card";
 import UserContext from "./Context";
+import "./CardDisplay.css";
 
 const CardDisplay = () => {
-    const { setPokemons, displayedPokemons, setDisplayedPokemons, isBattleActive } = useContext(UserContext);
+    const { setPokemons, displayedPokemons, setDisplayedPokemons, isBattleActive, competitors, setCompetitors } = useContext(UserContext);
 
     useEffect(() => {    
         let results = [];
@@ -23,11 +24,17 @@ const CardDisplay = () => {
                 console.log(error);
             }) 
         }   
+
     // eslint-disable-next-line 
     },[])
+
+    if (competitors.length === 2) {
+            alert('battle!')
+            setCompetitors([]);
+        } 
     
   return (
-    <div className="container">
+    <div className="flex">
         {displayedPokemons?.length ? (
             displayedPokemons.map((pokemon, i) => <Card pokemon={pokemon} isBattle = {isBattleActive} key={i}/>)
         ) : (

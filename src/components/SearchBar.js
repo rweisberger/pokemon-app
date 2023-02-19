@@ -5,25 +5,30 @@ import UserContext from "./Context";
 
 const SearchBar =() => {
     const [searchName, setSearchName] = useState('');
+    const [isActiveSearch, setIsActiveSearch] = useState(false)
     const { pokemons, setDisplayedPokemons } = useContext(UserContext);
-    // console.log('pokemons',pokemons)
-
+    
     const findPokemon = (e) => {
         e.preventDefault();
         if(searchName.length){
-            // console.log(searchName);
             let matches = pokemons.filter(pokemon => pokemon.name.includes(searchName))
             setDisplayedPokemons(matches);
+            setIsActiveSearch(true);
+            setSearchName('');
         } else {
-            setDisplayedPokemons(pokemons)
+            setDisplayedPokemons(pokemons);
+            setIsActiveSearch(false);   
         }
     }
  
     return (
-        <form className="form-inline my-2 my-lg-0">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search Pokemon" aria-label="Search" value={searchName} onChange={e => setSearchName(e.currentTarget.value)}/>
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={findPokemon}>Search</button>
-        </form>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search Pokemon" aria-label="Recipient's username" aria-describedby="basic-addon2" value={searchName} onChange={e => setSearchName(e.currentTarget.value)}/>
+            <div class="input-group-append">
+                <button class="input-group-text" id="basic-addon2" type="submit" onClick={findPokemon}>{isActiveSearch ? "View All" : "Search"}</button>
+            </div>
+         </div>
+      
     )
 }
 export default SearchBar;

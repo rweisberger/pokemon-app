@@ -16,18 +16,17 @@ function App() {
 
   let context = {pokemons, setPokemons, displayedPokemons, setDisplayedPokemons, isBattleActive, setIsBattleActive, competitors, setCompetitors}
   
-  const handleClick = () => {
-    setIsBattleActive(true);
-    // console.log('battle', isBattleActive)
-  }
+  // const handleClick = () => {
+  //   setIsBattleActive(true);
+  // }
 
   return (
 
     <div className="App">
       <UserContext.Provider value={context}> 
         <SearchBar />
-        <button type="button" className="btn btn-primary" onClick={handleClick}>Battle Mode</button>
- 
+        <BattleButton />
+        {/* <button type="button" className="btn btn-outline-danger" onClick={handleClick}>Battle Mode</button> */}
         <h1>Pokemon</h1>
         <CardDisplay />
       </UserContext.Provider>
