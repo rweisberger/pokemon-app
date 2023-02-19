@@ -6,7 +6,7 @@ import UserContext from "./Context";
 import "./CardDisplay.css";
 
 const CardDisplay = () => {
-    const { setPokemons, displayedPokemons, setDisplayedPokemons, isBattleActive, competitors, setCompetitors } = useContext(UserContext);
+    const { pokemons, setPokemons, displayedPokemons, setDisplayedPokemons, isBattleActive, competitors, setCompetitors } = useContext(UserContext);
 
     useEffect(() => {    
         let results = [];
@@ -30,6 +30,20 @@ const CardDisplay = () => {
     useEffect(() => {
         if (competitors.length === 2) {
             alert(`${competitors[0]} v. ${competitors[1]}: Battle on!`)
+            let card1 = (pokemons.find(pokemon => pokemon.name === competitors[0].toLowerCase()));
+            let card2 = (pokemons.find(pokemon => pokemon.name === competitors[1].toLowerCase()));
+            console.log(card1.types[0].type.name, card2.types[0].type.name);
+            if(card1.types[0].type.name === card2.types[0].type.name) {
+                console.log('check evolution');
+            } else if(card1.types[0].type.name === 'fire' && card2.types[0].type.name === "grass") {
+                console.log(card1.name, 'wins')
+            } else if(card1.types[0].type.name === 'grass' && card2.types[0].type.name === "water") {
+                console.log(card1.name, 'wins')
+            } else if(card1.types[0].type.name === 'water' && card2.types[0].type.name === "fire") {
+            console.log(card1.name, 'wins')
+            } else { 
+                console.log(card2.name, 'wins')
+            }
             setCompetitors([]);
             } 
     // eslint-disable-next-line

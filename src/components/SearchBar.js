@@ -22,10 +22,10 @@ const SearchBar =() => {
     }
  
     return (
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search Pokemon" aria-label="Recipient's username" aria-describedby="basic-addon2" value={searchName} onChange={e => setSearchName(e.currentTarget.value)}/>
-            <div class="input-group-append">
-                <button class="input-group-text" id="basic-addon2" type="submit" onClick={findPokemon}>{isActiveSearch ? "View All" : "Search"}</button>
+        <div className="input-group mb-3">
+            <input type="text" className="form-control" placeholder="Search Pokemon" aria-label="Recipient's username" aria-describedby="basic-addon2" value={searchName} onChange={e => setSearchName(e.currentTarget.value)}/>
+            <div className="input-group-append">
+                <button className="input-group-text" id="basic-addon2" type="submit" onClick={findPokemon}>{isActiveSearch ? "View All" : "Search"}</button>
             </div>
          </div>
       

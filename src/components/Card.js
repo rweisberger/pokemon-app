@@ -19,7 +19,6 @@ const Card = ({pokemon:{name, abilities, types, weight, height, sprites}}) => {
         console.log(name);
         setIsSelected(true);
         setCompetitors([...competitors, name])
-        console.log('competitors', competitors);
     }
     
     return(
