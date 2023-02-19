@@ -1,9 +1,9 @@
 import { useContext } from "react";
 
-import UserContext from "./Context";
+import PokeContext from "./Context";
 
 const BattleButton = () => {
-    const { isBattleActive, setIsBattleActive } = useContext(UserContext);
+    const { isBattleActive, setIsBattleActive } = useContext(PokeContext);
 
     const handleClick = () => {
         setIsBattleActive(!isBattleActive);

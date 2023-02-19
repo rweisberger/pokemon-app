@@ -1,12 +1,12 @@
-import { useContext,useEffect, useState} from "react";
+import { useContext, useEffect, useState} from "react";
 
-import UserContext from "./Context";
+import PokeContext from "./Context";
 import "./Card.css";
 
 const Card = ({pokemon:{name, abilities, types, weight, height, sprites}}) => {
-    const { pokemons, isBattleActive, competitors, setCompetitors } = useContext(UserContext);
-    const [{ ability }] = abilities;
-    const [{type}] = types
+    const { isBattleActive, competitors, setCompetitors } = useContext(PokeContext);
+    const { ability } = abilities[0];
+    const { type } = types[0];
     const typeColor = {'grass': 'green', 
                       'water': 'blue',
                       'fire': 'red'};
@@ -17,21 +17,22 @@ const Card = ({pokemon:{name, abilities, types, weight, height, sprites}}) => {
 
     useEffect(() => {
         if(competitors.length === 2) setIsSelected(false);
-    },[competitors.length])
+    },[competitors.length]);
 
     const handleClick = () => {
-        console.log(name);
-        setIsSelected(true);
-        setCompetitors([...competitors, name]);
+        if(isBattleActive){
+            setIsSelected(true);
+            setCompetitors([...competitors, name]);
+        }
     }
     
     return(
         <>
         {isBattleActive ? (
             <div className="card" style={{ "width": "15rem", "background": isSelected ? "lightgreen": ""}} onClick={handleClick}>
-                <img className="card-img-top" src={sprites?.front_default} alt={`Front view of ${name}`}/>
+                <h5 className="card-title mt-2">{name}</h5>
+                <img className="card-img-top" src={sprites.front_default} alt={`Front view of ${name}`}/>
                 <div className="card-body">
-                    <h5 className="card-title">{name}</h5>
                     <div> <b>Height:</b> {height} <b>Weight:</b> {weight}</div>
                     <div> <b>Ability:</b> {ability.name} </div>
                     <div style={{ "color": color}}> <b>Type:</b> {type.name} </div>
@@ -39,9 +40,9 @@ const Card = ({pokemon:{name, abilities, types, weight, height, sprites}}) => {
             </div>
         ) : (
         <div className="card" style={{ "width": "15rem", "background": 'white'}}>
+            <h5 className="card-title mt-2">{name}</h5>
             <img className="card-img-top" src={sprites?.front_default} alt={`Front view of ${name}`}/>
             <div className="card-body">
-                <h5 className="card-title">{name}</h5>
                 <div> <b>Height:</b> {height} <b>Weight:</b> {weight}</div>
                 <div> <b>Ability:</b> {ability.name} </div>
                 <div style={{ "color": color}}> <b>Type:</b> {type.name} </div>

@@ -1,15 +1,14 @@
 
 import { useContext } from "react";
-import UserContext from "./Context";
+import PokeContext from "./Context";
 
 
 const SearchBar =() => {
-    const { pokemons, setDisplayedPokemons } = useContext(UserContext);
+    const { pokemons, setDisplayedPokemons } = useContext(PokeContext);
     
     const findPokemon = (e) => {
         // e.preventDefault();
         let searchName = e.currentTarget.value
-        
         let matches = pokemons.filter(pokemon => pokemon.name.includes(searchName))
         setDisplayedPokemons(matches);
     }

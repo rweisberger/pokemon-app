@@ -4,7 +4,7 @@ import './App.css';
 import SearchBar from './components/SearchBar';
 import CardDisplay from './components/CardDisplay';
 import BattleButton from './components/BattleButton';
-import UserContext from './components/Context';
+import PokeContext from './components/Context';
 
 function App() {
   const [isBattleActive, setIsBattleActive] = useState(false);
@@ -17,12 +17,12 @@ function App() {
   return (
 
     <div className="App">
-      <UserContext.Provider value={context}> 
+      <PokeContext.Provider value={context}> 
         <SearchBar />
         <BattleButton />
         <h1>Pokemon</h1>
         <CardDisplay />
-      </UserContext.Provider>
+      </PokeContext.Provider>
     </div>
   );
 }
