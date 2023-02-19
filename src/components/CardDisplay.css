@@ -1,4 +1,9 @@
-.flex {
+.outer-container {
+    display: flex;
+    justify-content: center;
+}
+.inner-container {
+    max-width: 55rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

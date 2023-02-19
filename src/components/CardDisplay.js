@@ -51,12 +51,14 @@ const CardDisplay = () => {
 
     
   return (
-    <div className="flex">
-        {displayedPokemons?.length ? (
-            displayedPokemons.map((pokemon, i) => <Card pokemon={pokemon} isBattle = {isBattleActive} key={i}/>)
-        ) : (
-            <div>Pokemon Loading...</div>
-        ) }
+    <div className="outer-container">
+        <div className="inner-container">
+            {displayedPokemons?.length ? (
+                displayedPokemons.map((pokemon, i) => <Card pokemon={pokemon} isBattle = {isBattleActive} key={i}/>)
+            ) : (
+                <div>Pokemon Loading...</div>
+            ) }
+        </div>
     </div>
   )
 }
