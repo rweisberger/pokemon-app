@@ -8,7 +8,7 @@
 
 ## View Deployment
 
-<p>This app is deployed through Github pages <a href="https://rweisberger.github.io/pokemon-app/"></a>.</p>
+<p>This app is deployed through <a href="https://rweisberger.github.io/pokemon-app/">Github pages</a>.</p>
 
 ## Start Locally
 
