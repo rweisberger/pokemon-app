@@ -9,20 +9,24 @@ const CardDisplay = () => {
     const { pokemons, setPokemons, displayedPokemons, setDisplayedPokemons, isBattleActive, setIsBattleActive, competitors, setCompetitors } = useContext(PokeContext);
 
     useEffect(() => {    
-        let results = [];
-
+        const requests = [];
+        const results = [];
+        
         for(let i = 1; i < 10; i++){
-            axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-            .then((response) => {
-                const { name, abilities, types, weight, height, sprites } = response.data;
-                results.push({name, abilities, types, weight, height, sprites});
-                setPokemons(results);
-                setDisplayedPokemons(results);
-            })
-            .catch((error)=> {
-                console.log(error);
-            }) 
+            requests.push(axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`))
         }   
+        Promise.all(requests).then(responses => {
+            responses.forEach(response => {
+                console.log(response.data)
+                const { name, abilities, types, weight, height, sprites } = response.data;
+                results.push({name, abilities, types, weight, height, sprites});   
+            })
+        })
+        .catch((error)=> console.log("error", error))
+        .finally(() => {
+            setPokemons([...results]);
+            setDisplayedPokemons([...results]);
+        });
     // eslint-disable-next-line 
     },[]);
 

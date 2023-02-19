@@ -20,7 +20,7 @@ function App() {
       <PokeContext.Provider value={context}> 
         <SearchBar />
         <BattleButton />
-        <h1>Pokemon</h1>
+        <h1 className="display-4">{isBattleActive ? "Pokemon Battle!" : "Pokemon" }</h1>
         <CardDisplay />
       </PokeContext.Provider>
     </div>
